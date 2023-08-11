@@ -21,7 +21,7 @@
   --surface-color: rgba(0, 0, 0, 0.05);
   --surface-color-hover: rgba(0, 0, 0, 0.02);
   --highlight-color: rgba(0, 0, 0, 0.1);
-   --switch-bg-url: url(./assets/Sun.svg);
+  --switch-bg-url: url(./assets/Sun.svg);
 }
 
 body {
@@ -60,14 +60,13 @@ body * {
   line-height: 24px;
   margin-top: 8px;
 }
-#switch{
-position: relative;
-width: 64px;
-margin: 4px auto;
-
+#switch {
+  position: relative;
+  width: 64px;
+  margin: 4px auto;
 }
 
-#switch button{
+#switch button {
   width: 32px;
   height: 32px;
   background: white var(--switch-bg-url) no-repeat center;
@@ -78,14 +77,18 @@ margin: 4px auto;
   left: 0;
   z-index: 1;
   transform: translateY(-50%);
+  animation: slide-back 0.4s;
 }
 
-.light #switch button{
-  right: 0;
-  left: initial;
+.light #switch button {
+  animation: slide-in 0.4s forwards;
 }
 
-#switch span{
+#switch button:hover {
+  outline: 8px solid var(--highlight-color);
+}
+
+#switch span {
   display: block;
   width: 64px;
   height: 24px;
@@ -149,4 +152,20 @@ footer {
   font-size: 14px;
 }
 
+@keyframes slide-in {
+  from {
+    left: 0;
+  }
+  to {
+    left: 50%;
+  }
+}
 
+@keyframes slide-back {
+  from {
+    left: 50%;
+  }
+  to {
+    left: 0;
+  }
+}
